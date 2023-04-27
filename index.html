@@ -6,14 +6,21 @@
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBhpdQueivl0EBnd00IkAVIClko4u7UE9g&libraries=places"></script>
 	<script src="autocomplete.js"></script>
 
+    <script>
+        function saveText() {
+			var text = document.getElementById("myText").value;
+			localStorage.setItem("savedText", text);
+		}
+    </script>
+
 </head>
 <body>
     <img src="projekt1.svg" style = "position: fixed; top: -80px; left: 30px; width: 300px;height: 300px;" alt="Logo" id="1000"/>
 	<div>
     <form action="visualisering.html" method="get">
         <div class="search-container">
-            <input type="text" placeholder="Indtast din adresse...">
-            <input type="submit" value="Søg">  
+            <input type="text" placeholder="Indtast din adresse..." id="myText">
+            <input type="submit" value="Søg" onclick="saveText()">  
         </div>
     </form>
 </div>
