@@ -8,15 +8,8 @@ body {
     background-color: #f1f1f1;
 }
 
-.logo {
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    transform: scale(35%);
-    border-radius: 30px;
-  }
-
 .search-container {
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
