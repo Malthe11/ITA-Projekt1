@@ -11,6 +11,8 @@ body {
 
 .search-container {
     position: relative;
+    width: 550px;
+    height: 55px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -25,7 +27,7 @@ flex: 1;
 padding: 10px;
 border: none;
 border-radius: 50px;
-font-size: 16px;
+font-size: 20px;
 background-color: transparent;
 }
 
