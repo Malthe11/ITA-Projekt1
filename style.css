@@ -11,8 +11,8 @@ body {
 
 .search-container {
     position: relative;
-    width: 550px;
-    height: 50px;
+    width: 580px;
+    height: 80px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -27,7 +27,7 @@ flex: 1;
 padding: 10px;
 border: none;
 border-radius: 50px;
-font-size: 20px;
+font-size: 25px;
 background-color: transparent;
 }
 
@@ -39,7 +39,7 @@ border: none;
 border-radius: 50px;
 background-color: #4CAF50;
 color: white;
-font-size: 20px;
+font-size: 25px;
 cursor: pointer;
 }
 
