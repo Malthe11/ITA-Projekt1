@@ -2,63 +2,15 @@
 <html>
 <head>
     <link rel="stylesheet" href="style.css">
-	<title>Search Field with Rounded Corners</title>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBhpdQueivl0EBnd00IkAVIClko4u7UE9g&libraries=places"></script>
-<script>
-    let autocomplete;
-    let address1Field;
-
-    function initAutocomplete() {
-        address1Field = document.querySelector("input[type='text']");
-        autocomplete = new google.maps.places.Autocomplete(address1Field, {
-            componentRestrictions: { country: ["dk"] },
-            fields: ["address_components", "geometry"],
-            types: ["address"],
-        });
-        
-        // Listen for når brugeren vælger en adresse fra dropdown-menuen.
-        autocomplete.addListener("place_changed", fillInAddress);
-    }
-    
-    function fillInAddress() {
-        // Hent detaljerne om adressen fra Autocomplete-objektet.
-        const place = autocomplete.getPlace();
-        
-        // Fyld hver adressekomponent i formularen med den tilsvarende værdi fra stedet.
-        for (const component of place.address_components) {
-            const componentType = component.types[0];
-
-            switch (componentType) {
-                case "street_number":
-                    document.querySelector("#address1").value = component.long_name;
-                    break;
-                case "route":
-                    document.querySelector("#address1").value += " " + component.short_name;
-                    break;
-                case "postal_code":
-                    document.querySelector("#postcode").value = component.long_name;
-                    break;
-                case "locality":
-                    document.querySelector("#city").value = component.long_name;
-                    break;
-                case "administrative_area_level_1":
-                    document.querySelector("#state").value = component.short_name;
-                    break;
-                case "country":
-                    document.querySelector("#country").value = component.long_name;
-                    break;
-            }
-        }
-    }
-    
-    window.onload = function() {
-        initAutocomplete();
-    }
-</script>
+	<title>ecometer.dk</title>
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBhpdQueivl0EBnd00IkAVIClko4u7UE9g&libraries=places"></script>
+	<script src="autocomplete.js"></script>
 
 </head>
 <body>
     <img src="projekt1.svg" style = "position: fixed; top: -80px; left: 30px; width: 300px;height: 300px;" alt="Logo" id="1000"/>
+	<div>
+	<div class="header"></div>
     <form action="visualisering.html" method="get">
         <div class="search-container">
             <input type="text" placeholder="Indtast din adresse...">
@@ -70,5 +22,6 @@
             <input type="submit" value="Søg">  
         </div>
     </form>
+</div>
 </body>
 </html>
