@@ -1,29 +1,63 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <link rel="stylesheet" href="style.css">
-	<title>ecometer.dk</title>
-	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBhpdQueivl0EBnd00IkAVIClko4u7UE9g&libraries=places"></script>
-	<script src="autocomplete.js"></script>
-
-    <script>
-        function saveText() {
-			var text = document.getElementById("myText").value;
-			localStorage.setItem("savedText", text);
+	<meta charset="UTF-8">
+	<title>Knapper til øst og vest</title>
+	<style>
+		.container {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			height: 100vh;
 		}
-    </script>
-
+		.button-container {
+			display: flex;
+			flex-direction: row;
+			align-items: center;
+			justify-content: center;
+			margin: 20px;
+		}
+		.button {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			width: 200px;
+			height: 100px;
+			background-color: #007bff;
+			color: white;
+			font-size: 24px;
+			font-weight: bold;
+			text-align: center;
+			border-radius: 10px;
+			margin: 10px;
+		}
+		.logo {
+			position: absolute;
+			top: 10px;
+			left: 10px;
+			width: 100px;
+			height: 100px;
+		}
+	</style>
 </head>
 <body>
-    <img src="projekt1.svg" style = "position: fixed; top: -90px; left: 30px; width: 350px;height: 350px;" alt="Logo"/>
-    <img src="Form 2.svg" style = "position: relative; top: -100px; left: 300px; width: 350px;height: 350px;" alt="Logo2" />
-	<div>
-    <form action="visualisering.html" method="get">
-        <div class="search-container">
-            <input type="text" placeholder="Indtast din adresse..." id="myText">
-            <input type="submit" value="Søg" onclick="saveText()">  
-        </div>
-    </form>
-</div>
+	<div class="container">
+		<div class="button-container">
+			<div class="button">
+				<!-- Her indsættes SVG-billedet over øst-knappen -->
+				<img src="Vest.svg" width="200" height="200" />
+				Vest
+			</div>
+			<div class="button">
+				<!-- Her indsættes SVG-billedet over vest-knappen -->
+				<img src="Øst.svg" width="200" height="200">
+				Øst
+			</div>
+		</div>
+	</div>
+	<div class="logo">
+		<!-- Her indsættes SVG-logoet -->
+		<img src="projekt1.svg"  width="200" height="200">
+	</div>
 </body>
 </html>

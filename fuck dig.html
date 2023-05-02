@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="style.css">
+	<title>ecometer.dk</title>
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBhpdQueivl0EBnd00IkAVIClko4u7UE9g&libraries=places"></script>
+	<script src="autocomplete.js"></script>
+
+    <script>
+        function saveText() {
+			var text = document.getElementById("myText").value;
+			localStorage.setItem("savedText", text);
+		}
+    </script>
+
+</head>
+<body>    
+    <img src="projekt1.svg" style = "position: fixed; top: -90px; left: 30px; width: 350px;height: 350px;" alt="Logo"/>
+    <img src="Form 2.svg" style = "position: relative; top: -100px; left: 300px; width: 350px;height: 350px;" alt="Logo2" />
+	<div>
+    <form action="visualisering.html" method="get">
+        <div class="search-container">
+            <input type="text" placeholder="Indtast din adresse..." id="myText">
+            <input type="submit" value="Søg" onclick="saveText()">  
+        </div>
+    </form>
+</div>
+</body>
+</html>
