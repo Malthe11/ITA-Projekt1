@@ -7,21 +7,43 @@ body {
   height: 100vh;
   background-image: url("https://www.pequeatwp.org/wp-content/uploads/2015/10/In-Totally-Green-Color-Lightness-and-Darkness-Differs-Single-Color-Wallpaper-Can-be-Interesting-HD-Abstract-Widescreen-Wallpaper.jpg");
   background-size: cover;
-  justify-content: flex-start;
+}
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+}
+
+main {
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .container {
   display: flex;
   flex-direction: row;
-  justify-content: flex-start;
 }
 .LOGO {
-  width: 30%;
+  width: 300px;
+  margin-right: auto;
 }
+.vest,
+.øst {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 20px;
+}
+.vestimage,
 .østimage {
   width: 200px;
-  height: 200px;
+  height: 300px;
 }
-.vestimage {
-  width: 200px;
-  height: 200px;
+
+a {
+  margin-top: 10px;
 }
