@@ -20,7 +20,7 @@
       var savedText = localStorage.getItem("savedText");
     document.getElementById("output").innerHTML = savedText;
 const w = 400;
-const h = 500;
+const h = 250;
 
   // Lav en svg
   const svg = d3.select("body")
@@ -36,7 +36,7 @@ const h = 500;
     .enter()
     .append("rect")
     .attr("x", function(d, i) { return w/(dataset.length*4) + i * (w/dataset.length); } )
-    .attr("y", function(d) { return h/4; })
+    .attr("y", function(d) { return h-(d.windpower); })
     .attr("width", w / (dataset.length*2))
     .attr("height", function(d) {return d.windpower; })
     .attr("fill", "blue");
