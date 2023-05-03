@@ -2,6 +2,13 @@ const express = require("express");
 const app = express();
 const port = 3000;
 
+app.use((req, res, next) => {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader("Access-Control-Allow-Methods", "POST, GET, PUT");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+  next();
+});
+
 app.get("/", (req, res) => {
   res.send("Hello World!");
 });
@@ -34,19 +41,15 @@ function getFoodGategories(handle) {
       return console.error("could not connect to postgres", err);
     }
     //select category, count(category_id) as antal from food_category join food using(category_id) group by category_id
+    //SELECT *, COUNT(dataid) as antal FROM energydata GROUP BY dataid LIMIT 10
     client.query(
-      "SELECT *, COUNT(dataid) as antal FROM energydata GROUP BY dataid LIMIT 10 ",
+      "SELECT onshorewindpower + offshorewindpower AS windpower FROM energydata WHERE pricearea = 'DK1' LIMIT 5",
       function (err, result) {
         if (err) {
           return console.error("error running query", err);
         }
-        let data = [];
-        let idx = 1;
-        for (const row of result.rows) {
-          data.push({ category: row.category, count: row.antal });
-          idx++;
-        }
-        handle(data);
+
+        handle(result.rows);
         client.end();
       }
     );
