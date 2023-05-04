@@ -17,9 +17,9 @@ header {
 }
 
 button {
+  border-width: 15px;
+  border-radius: 50px;
   background-color: transparent;
-  border-radius: 5px;
-  border-style: dotted;
   border-color: white;
   color: white;
   margin-top: 15px;
@@ -29,7 +29,6 @@ button {
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
-  border-radius: 50px;
 }
 
 main {
