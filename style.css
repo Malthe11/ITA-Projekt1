@@ -17,17 +17,19 @@ header {
 }
 
 button {
-  background-color: #4caf50;
-  border: none;
+  background-color: transparent;
+  border-radius: 5px;
+  border-style: dotted;
+  border-color: white;
   color: white;
   margin-top: 15px;
-  padding: 15px 32px;
+  margin-right: 50px;
+  padding: 15px 45px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
-  opacity: 86%;
-  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 50px;
 }
 
 main {
@@ -42,6 +44,7 @@ main {
   flex-direction: row;
 }
 .LOGO {
+  margin-top: -70px;
   width: 300px;
   padding-left: 30px;
 }
@@ -50,16 +53,19 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 0 20px;
+  margin: 0 -80px;
 }
 .vestimage {
-  width: 350px; /* virker ikke */
-  height: 300px;
+  box-sizing: border-box;
+  width: 500px;
+  height: 550px;
+  padding: 10px;
 }
 
 .østimage {
-  width: 200px;
+  width: 300px;
   height: 300px;
+  margin-top: 250px;
 }
 
 a {
