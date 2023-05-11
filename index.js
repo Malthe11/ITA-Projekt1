@@ -1,5 +1,7 @@
 const express = require("express");
 const { Client } = require("pg");
+const cors = require("cors");
+
 //postgres://pzshqund:DcBloNSJpyACN6rOZgnuPntOlgr_Yjtb@hattie.db.elephantsql.com/pzshqund
 const app = express();
 const api_port = 3000;
@@ -10,8 +12,15 @@ const klient = new Client({
   password: "DcBloNSJpyACN6rOZgnuPntOlgr_Yjtb",
   port: 5432,
 });
+
 const qryA = `SELECT onshorewindpower + offshorewindpower AS windpower FROM energydata WHERE pricearea = 'DK1' LIMIT 5`;
 const qryB = `SELECT fossilgas + fossilhardcoal + fossiloil as notgreen, biomass + hydropower + otherrenewable + solarpower + onshorewindpower + offshorewindpower AS green FROM energydata WHERE pricearea = 'DK1' LIMIT 10`;
+
+app.use(
+  cors({
+    origin: "*",
+  })
+);
 
 app.get("/test", async (req, res) => {
   res.send("hej");
