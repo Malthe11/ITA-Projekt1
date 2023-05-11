@@ -65,5 +65,5 @@ app.get("/Visualisering3", async (req, res) => {
 // Programmet starter her:
 klient.connect();
 app.listen(api_port, () => {
-  console.log(`App lytter på http://localhost:${api_port}`);
+  console.log(`App lytter på https://ecometerdata.onrender.com`);
 });
