@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <link rel="stylesheet" href="style.css" />
+    <script src="functions.js"></script>
   </head>
 
   <body>
@@ -16,17 +17,28 @@
           <a href="visualisering.html">
             <img src="SVG/Vest.svg" class="vestimage"
           /></a>
-          <button onclick="document.location='visualisering.html'">
-            VEST KNAP
+          <button
+            onmouseover="forstørbilledevest()"
+            onmouseout="nulstilBilledevest()"
+            onclick="document.location='visualisering.html'"
+            class="button-73"
+            role="button"
+          >
+            Vest
           </button>
         </div>
         <div class="øst">
           <a href="visualisering.html"
             ><img src="SVG/Øst.svg" class="østimage"
           /></a>
-
-          <button onclick="document.location='visualisering.html'">
-            ØST KNAP
+          <button
+            onmouseover="forstørbilledeøst()"
+            onmouseout="nulstilBilledeøst()"
+            onclick="document.location='visualisering.html'"
+            class="button-73"
+            role="button"
+          >
+            Øst
           </button>
         </div>
       </div>
