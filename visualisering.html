@@ -34,7 +34,7 @@ const margin = { top: 20, right: 20, bottom: 40, left: 40 };
 const w = 500 - margin.left - margin.right;
 const h = 300 - margin.top - margin.bottom;
 
-const svg = d3.select("body")
+let svg = d3.select("body")
   .append("svg")
   .attr("width", w + margin.left + margin.right)
   .attr("height", h + margin.top + margin.bottom)
@@ -42,27 +42,34 @@ const svg = d3.select("body")
   .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
 
-d3.json("https://ecometerdata.onrender.com/Visualisering1").then(function(data) {
-  let dataset = data.dataWind.reverse();
+let start = 0;
 
+function show(){
+  d3.json("https://ecometerdata.onrender.com/Visualisering1").then(function(dataset) {
+  dataset = dataset.dataWind.reverse();
+
+  let data = [];
+  for (let i=0; i < 12; i++)
+     data.push(dataset[i+start]);
+  
   // Define the scales
   const yScale = d3.scaleLinear()
-    .domain([0, d3.max(dataset, function(d) { return d.windpower; })])
+    .domain([0, d3.max(data, function(d) { return d.windpower; })])
     .range([h, 0])
 
   const xScale = d3.scaleBand()
-    .domain(dataset.map(function(d) { return d.time; }))
+    .domain(data.map(function(d) { return d.time; }))
     .range([0, w])
 
 
   // Create the bars
   svg.selectAll("rect")
-    .data(dataset)
+    .data(data)
     .enter()
     .append("rect")
-    .attr("x", function(d, i) { return w / (dataset.length * 4) + i * (w / dataset.length); })
+    .attr("x", function(d, i) { return w / (data.length * 4) + i * (w / data.length); })
     .attr("y", function(d) { return yScale(d.windpower); })
-    .attr("width", w / (dataset.length * 2))
+    .attr("width", w / (data.length * 2))
     .attr("height", function(d) { return h - yScale(d.windpower); })
     .attr("fill", "blue");
 
@@ -84,6 +91,7 @@ d3.json("https://ecometerdata.onrender.com/Visualisering1").then(function(data) 
     .attr("transform", "translate(0," + h +")")
     .call(xAxis);
 });
+}
   
 
 d3.json("https://ecometerdata.onrender.com/Visualisering3").then( function StackedAreaChart(data, {
@@ -192,8 +200,22 @@ d3.json("https://ecometerdata.onrender.com/Visualisering3").then( function Stack
 // Released under the ISC license.
 // https://observablehq.com/@d3/stacked-area-chart
 
+function next (){
+  d3.select('svg').remove();
+  start=start+12;
+  svg = d3.select("body")
+  .append("svg")
+  .attr("width", w + margin.left + margin.right)
+  .attr("height", h + margin.top + margin.bottom)
+  .append("g")
+  .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
+  show();
+}
+show();
 </script>
+<button type="button" onclick="next()">next</button>
+
 </body>
 
 </html>
