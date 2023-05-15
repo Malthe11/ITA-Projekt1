@@ -13,8 +13,9 @@ const klient = new Client({
   port: 5432,
 });
 
-const qryA = `SELECT onshorewindpower + offshorewindpower AS windpower FROM energydata WHERE pricearea = 'DK1' LIMIT 5`;
+const qryA = `SELECT onshorewindpower + offshorewindpower AS windpower FROM energydata WHERE pricearea = 'DK1' LIMIT 10`;
 const qryB = `SELECT fossilgas + fossilhardcoal + fossiloil as notgreen, biomass + hydropower + otherrenewable + solarpower + onshorewindpower + offshorewindpower AS green FROM energydata WHERE pricearea = 'DK1' LIMIT 10`;
+const qryC = `SELECT hourdk AS Time , onshorewindpower + offshorewindpower AS Windpower, hydropower AS hydro, solarpower AS solarpower, fossilgas + fossilhardcoal + fossiloil as fossil FROM energydata WHERE pricearea = 'DK1' LIMIT 10`;
 
 app.use(
   cors({
