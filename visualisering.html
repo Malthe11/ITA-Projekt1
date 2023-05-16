@@ -41,12 +41,11 @@ let svg = d3.select("body")
   .append("g")
   .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-
 let start = 0;
 
 function show(){
   d3.json("https://ecometerdata.onrender.com/Visualisering1").then(function(dataset) {
-  dataset = dataset.dataWind.reverse();
+  dataset = dataset.dataWind;
 
   let data = [];
   for (let i=0; i < 12; i++)
@@ -102,9 +101,10 @@ function next (){
   .attr("height", h + margin.top + margin.bottom)
   .append("g")
   .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
-  show();
+  show()
 }
+
+
 show();
 </script>
 <button type="button" onclick="next()">next</button>
