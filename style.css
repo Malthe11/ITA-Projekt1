@@ -19,13 +19,11 @@ header {
   transform: scale(1.2);
   transition: transform 0.3s ease;
 }
-/* CSS */
 .button-73 {
   appearance: none;
   background-color: #ffffff;
   border-radius: 40em;
   border-style: none;
-  box-shadow: #adcfff 0 -12px 6px inset;
   box-sizing: border-box;
   color: #000000;
   cursor: pointer;
@@ -49,8 +47,8 @@ header {
 }
 
 .button-73:hover {
-  background-color: #ffc229;
-  box-shadow: #ff6314 0 -6px 8px inset;
+  background-color: #aeea86;
+  box-shadow: #6cb27c 0 -6px 8px inset;
   transform: scale(1.125);
 }
 
