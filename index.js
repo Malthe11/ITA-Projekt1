@@ -115,7 +115,7 @@ app.get("/Visualisering4", async (req, res) => {
     let queryData = await klient.query(qryD);
     res.json({
       ok: true,
-      foods: queryData.rows,
+      streamGraph: queryData.rows,
     });
   } catch (error) {
     res.json({
