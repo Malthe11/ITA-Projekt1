@@ -1,9 +1,9 @@
 h1, h2 {
-    background-color: blue;
+    background-color: none;
   }
   body {
     background-color: rgb(67, 0, 100);
-    background-image: url("bag.jfif");
+    background-image: url("bag.JPG");
     color: rgba(211, 33, 33, 0.852)
   }
 

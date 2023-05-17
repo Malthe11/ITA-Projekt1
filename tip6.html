@@ -31,18 +31,30 @@
         h1 {
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   font-size: 40px;
-  
+}
+.round {
+  border-radius: 50%; /* sætter en radius på 50% af billedets bredde/højde, hvilket skaber en rund form */
+  overflow: hidden; /* sikrer, at billedet ikke overskrider rammens runde form */
+}
 
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Højden på containeren bliver sat til viewport-højden */
+}
+.center img {
+  display: block;
 }
       </style>
     <body>
-        <h1>Her er 10 anbefalinger til, hvordan du kan leve mere miljøvenligt</h1>
+        <h1>Sådan sparer du penge på strømmen</h1>
 </body>
-<h2>Genbrug og genanvend</h2>
+<h2>Sluk lyset:</h2>
 <center>
-<a href="https://mst.dk/affald-jord/affald/saerligt-for-borgere-om-affald/sortering-af-affald/"><img src="gen.JPG" style="width: 30%"/></a>
+  <a href=""><img src="lys.JPG" alt="lys" class="round" style="width: 30%"/></a>
 </center>
-<p>  Sorter dit affald og genbrug, så meget som muligt. Køb genanvendelige produkter og undgå engangsprodukter.</p>
+<p>Sluk lyset, når du forlader rummet. Hvis du slukker din 60W-pære over spisebordet 2,5 time om dagen, kan du spare 100 kr. på et år.</p>
 <a href="tip5.html"><button type="button">Tilbage</button></a> 
 <a href="tip7.html"><button type="button">Næste</button></a>
 </html>

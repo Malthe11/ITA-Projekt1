@@ -6,6 +6,7 @@
     <script type="text/javascript" src="d3.js"></script>
     <link rel="stylesheet" href="style2.css" />
   </head>
+
   <body>
     <header class="top-section">
       <a href="index.html"><img class="LOGO" src="SVG/projekt1.svg" /></a>
@@ -14,15 +15,21 @@
       <a href="tips.html"><button type="button">Få tips!</button></a>
     </header>
 
-    <p id="output"></p>
+    <div class="container">
+      <div class="column"></div>
+      <div class="column"></div>
+    </div>
 
-<script type="text/javascript">
-    
+    <!-- viser output = tekst gemt i localstorage
+      <p id="output"></p>
+    <script type="text/javascript">
       var savedText = localStorage.getItem("savedText");
     document.getElementById("output").innerHTML = savedText;
 
 
 </script>
+
+
 </body>
 
 </html>
