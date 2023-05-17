@@ -1,9 +1,24 @@
 .LOGO {
   position: absolute;
-  top: -70px;
+  top: 15px;
   left: 30px;
   width: 300px;
 }
+.logocontainer {
+  width: auto;
+  height: 300px;
+  overflow: hidden;
+}
+.logocontainer img {
+  width: 300px;
+  height: 100px;
+  object-fit: cover;
+  transition: transform 0.3s;
+}
+.logocontainer:hover img {
+  transform: scale(1.1);
+}
+
 body {
   display: flex;
   justify-content: center;
