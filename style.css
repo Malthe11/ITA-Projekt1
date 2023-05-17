@@ -79,7 +79,7 @@ main {
   width: 300px;
 }
 .logocontainer {
-  width: auto;
+  width: 0;
   height: 300px;
   overflow: hidden;
 }

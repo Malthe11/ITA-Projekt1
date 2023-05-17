@@ -5,7 +5,7 @@
   width: 300px;
 }
 .logocontainer {
-  width: auto;
+  width: 0;
   height: 300px;
   overflow: hidden;
 }
@@ -29,12 +29,13 @@ body {
 }
 
 .container {
-  justify-content: space-around;
+  justify-content: space-evenly;
   align-items: center;
   display: flex;
-  width: 1100px;
+  width: 1000px;
   flex-wrap: wrap;
-  gap: 20px;
+  gap: 50px;
+  top: 1000px;
 }
 
 .column {
