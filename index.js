@@ -110,6 +110,21 @@ app.get("/Visualisering3", async (req, res) => {
   }
 });
 
+app.get("/Visualisering4", async (req, res) => {
+  try {
+    let queryData = await klient.query(qryD);
+    res.json({
+      ok: true,
+      foods: queryData.rows,
+    });
+  } catch (error) {
+    res.json({
+      ok: false,
+      message: error.message,
+    });
+  }
+});
+
 // Programmet starter her:
 klient.connect();
 app.listen(api_port, () => {
