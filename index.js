@@ -18,7 +18,7 @@ const qryB = `SELECT onshorewindpower + offshorewindpower AS windpower, hourdk A
 //const qryB = `SELECT fossilgas + fossilhardcoal + fossiloil as notgreen, biomass + hydropower + otherrenewable + solarpower + onshorewindpower + offshorewindpower AS green FROM energydata WHERE pricearea = 'DK1' LIMIT 10`;
 const qryC = `SELECT hourdk AS Time , onshorewindpower + offshorewindpower AS Windpower, hydropower AS hydro, solarpower AS solarpower, fossilgas + fossilhardcoal + fossiloil as fossil FROM energydata WHERE pricearea = 'DK1' LIMIT 10`;
 
-const qryD = `SELECT EXTRACT(HOUR FROM hourdk) AS Time , onshorewindpower + offshorewindpower AS Windpower, hydropower AS hydro, solarpower, biomass, otherrenewable, fossilgas AS gas, fossilhardcoal AS Coal, fossiloil as oil FROM energydata WHERE pricearea = 'DK1' LIMIT 576`;
+const qryD = `SELECT EXTRACT(HOUR FROM hourdk) AS Time , onshorewindpower + offshorewindpower AS Windpower, hydropower AS hydro, solarpower, biomass, otherrenewable, fossilgas AS gas, fossilhardcoal AS Coal, fossiloil as oil FROM energydata WHERE pricearea = 'DK1' LIMIT 24`;
 
 app.use(
   cors({
