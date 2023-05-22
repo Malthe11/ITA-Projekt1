@@ -16,7 +16,7 @@ const klient = new Client({
 const qryA = `SELECT onshorewindpower + offshorewindpower AS windpower, hourdk AS time FROM energydata WHERE pricearea = 'DK1' LIMIT 72`;
 const qryB = `SELECT onshorewindpower + offshorewindpower AS windpower, hourdk AS time FROM energydata WHERE pricearea = 'DK1' LIMIT 12`;
 //const qryB = `SELECT fossilgas + fossilhardcoal + fossiloil as notgreen, biomass + hydropower + otherrenewable + solarpower + onshorewindpower + offshorewindpower AS green FROM energydata WHERE pricearea = 'DK1' LIMIT 10`;
-const qryC = `SELECT hourdk AS Time , onshorewindpower + offshorewindpower AS Windpower, hydropower AS hydro, solarpower AS solarpower, fossilgas + fossilhardcoal + fossiloil as fossil FROM energydata WHERE pricearea = 'DK1' LIMIT 10`;
+const qryC = `SELECT EXTRACT(HOUR FROM hourdk) AS Time, onshorewindpower + offshorewindpower AS Windpower, hydropower AS hydro, solarpower, fossilgas + fossilhardcoal + fossiloil as fossil FROM energydata WHERE pricearea = 'DK1' OFFSET  9 LIMIT 1`;
 
 const qryD = `SELECT EXTRACT(HOUR FROM hourdk) AS Time, onshorewindpower + offshorewindpower AS Windpower, hydropower AS hydro, solarpower, biomass, fossilgas + fossilhardcoal + fossiloil as fossil FROM energydata WHERE pricearea = 'DK1' OFFSET  9 LIMIT 24`;
 
