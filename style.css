@@ -73,9 +73,24 @@ main {
   flex-direction: row;
 }
 .LOGO {
-  margin-top: -70px;
+  position: absolute;
+  top: 15px;
+  left: 30px;
   width: 300px;
-  padding-left: 30px;
+}
+.logocontainer {
+  width: 0;
+  height: 300px;
+  overflow: hidden;
+}
+.logocontainer img {
+  width: 300px;
+  height: 100px;
+  object-fit: cover;
+  transition: transform 0.3s;
+}
+.logocontainer:hover img {
+  transform: scale(1.1);
 }
 .vest,
 .øst {
