@@ -18,42 +18,7 @@ const qryB = `SELECT onshorewindpower + offshorewindpower AS windpower, hourdk A
 //const qryB = `SELECT fossilgas + fossilhardcoal + fossiloil as notgreen, biomass + hydropower + otherrenewable + solarpower + onshorewindpower + offshorewindpower AS green FROM energydata WHERE pricearea = 'DK1' LIMIT 10`;
 const qryC = `SELECT hourdk AS Time , onshorewindpower + offshorewindpower AS Windpower, hydropower AS hydro, solarpower AS solarpower, fossilgas + fossilhardcoal + fossiloil as fossil FROM energydata WHERE pricearea = 'DK1' LIMIT 10`;
 
-const qryD = `SELECT hourdk, category, value
-FROM
-(
-    SELECT hourdk, 'windpower' AS category, onshorewindpower + offshorewindpower AS value
-    FROM energydata
-    WHERE pricearea = 'DK1'
-    UNION ALL
-    SELECT hourdk, 'solarpower' AS category, solarpower AS value
-    FROM energydata
-    WHERE pricearea = 'DK1'
-	UNION ALL
-	SELECT hourdk, 'biomass' AS category, biomass AS value
-    FROM energydata
-    WHERE pricearea = 'DK1'
-	UNION ALL
-	SELECT hourdk, 'hydropower' AS category, hydropower AS value
-    FROM energydata
-    WHERE pricearea = 'DK1'
-	UNION ALL
-	SELECT hourdk, 'otherrenewable' AS category, otherrenewable AS value
-    FROM energydata
-    WHERE pricearea = 'DK1'
-	UNION ALL
-	SELECT hourdk, 'fossiloil' AS category, fossiloil AS value
-    FROM energydata
-    WHERE pricearea = 'DK1'
-	UNION ALL
-	SELECT hourdk, 'fossilgas' AS category, fossilgas AS value
-    FROM energydata
-    WHERE pricearea = 'DK1'
-	UNION ALL
-	SELECT hourdk, 'fossilhardcoal' AS category, fossilhardcoal AS value
-    FROM energydata
-    WHERE pricearea = 'DK1'
-) AS subquery
-ORDER BY hourdk DESC, category ASC LIMIT 576;`;
+const qryD = `SELECT hourdk AS Time , onshorewindpower + offshorewindpower AS Windpower, hydropower AS hydro, solarpower, biomass, otherrenewable, fossilgas AS gas, fossilhardcoal AS Coal, fossiloil as oil FROM energydata WHERE pricearea = 'DK1' LIMIT 576`;
 
 app.use(
   cors({
