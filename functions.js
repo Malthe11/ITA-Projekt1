@@ -22,6 +22,42 @@ function UpdateVandprocent() {
 }
 var percentageFromDatabase = getRandomNumber; // <-- erstattes med funktionen der giver korrekte procent
 
+function dataPercentage(item, elementId) {
+  d3.json("https://ecometerdata.onrender.com/Visualisering3").then(function (
+    dataset
+  ) {
+    let data = dataset.foods;
+    let dataElement = data[0];
+    let windpower = dataElement.windpower;
+    let hydro = dataElement.hydro;
+    let solarpower = dataElement.solarpower;
+    let fossil = dataElement.fossil;
+
+    let total = windpower + hydro + solarpower + fossil;
+
+    function getPercentage(item) {
+      switch (item) {
+        case "windpower":
+          return ((windpower / total) * 100).toFixed(2);
+        case "hydro":
+          return ((hydro / total) * 100).toFixed(2);
+        case "solarpower":
+          return ((solarpower / total) * 100).toFixed(2);
+        case "fossil":
+          return ((fossil / total) * 100).toFixed(2);
+        default:
+          return 0;
+      }
+    }
+
+    let percentage = getPercentage(item);
+    let element = document.getElementById(elementId);
+    if (element) {
+      element.innerHTML = percentage + "%";
+    }
+  });
+}
+
 function getRandomNumber() {
   return Math.floor(Math.random() * 101) + "%";
 }
