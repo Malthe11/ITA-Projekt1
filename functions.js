@@ -28,8 +28,8 @@ function getRandomNumber() {
 document.addEventListener("DOMContentLoaded", function () {
   var text = new Blotter.Text("72%", {
     family: "sans-serif",
-    size: 150,
-    fill: "#DCDCDC",
+    size: 140,
+    fill: "#FFF",
   });
 
   var material = new Blotter.LiquidDistortMaterial();
