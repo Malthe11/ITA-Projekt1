@@ -17,15 +17,12 @@
         <a href="index.html"><img class="LOGO" src="SVG/projekt1.svg" /></a>
       </div>
     </header>
+    <h1 class="visuoverskrift">Hvor kommer energien fra?</h1>
     <div id="my_dataviz" alt="StreamGraph"></div>
     <script type="text/javascript">
-
-dataPercentage("solarpower", "solarPercentage");
-dataPercentage("fossil", "fossilPercentage");
-//dataPercentage("windpower", "vindtekst");
-
-
-
+      dataPercentage("solarpower", "solarPercentage");
+      dataPercentage("fossil", "fossilPercentage");
+      //dataPercentage("windpower", "vindtekst");
 
       // set the dimensions and margins of the graph
       const margin = { top: 20, right: 30, bottom: 30, left: 60 },
@@ -146,18 +143,18 @@ dataPercentage("fossil", "fossilPercentage");
             });
         }
       );
-
     </script>
     <div class="container">
       <div class="column">
-        <a class="neontekst" id="solarPercentage">69%</a>
         <span class="description">Solenergi</span>
+        <a class="neontekst">69%</a>
       </div>
       <div class="column">
-        <a id="vindtekst"></a>
         <span class="description">Vindenergi</span>
+        <a id="vindtekst"></a>
       </div>
       <div class="column">
+        <span class="description">Vandkraft</span>
         <svg
           class="vandprocent"
           version="1.1"
@@ -205,11 +202,10 @@ dataPercentage("fossil", "fossilPercentage");
             height="400"
           />
         </svg>
-        <span class="description">Vandkraft</span>
       </div>
       <div class="column">
-        <a class="dirtytekst" id="fossilPercentage">5%</a>
         <span class="description">fossile brændsler</span>
+        <a class="dirtytekst" id="fossilPercentage">5%</a>
       </div>
     </div>
   </body>
