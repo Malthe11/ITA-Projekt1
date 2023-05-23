@@ -51,13 +51,18 @@ function dataPercentage(item, elementId) {
     }
 
     let percentage = getPercentage(item);
-    let element = document.getElementById(elementId);
-    if (element) {
-      element.innerHTML = percentage + "%";
-    }
+
+    if (elementId) {
+      var element = document.getElementById(elementId);
+      if (element) {
+        element.innerHTML = percentage + "%";
+      }
+    } else return percentage;
+
+    console.log(item + " percentage:", percentage + "%");
   });
 }
-
+console.log("vind =" + dataPercentage("windpower"));
 function getRandomNumber() {
   return Math.floor(Math.random() * 101) + "%";
 }
