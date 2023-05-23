@@ -22,18 +22,12 @@ function UpdateVandprocent() {
 }
 var percentageFromDatabase = getRandomNumber; // <-- erstattes med funktionen der giver korrekte procent
 
-function dataPercentage(item) {
+function dataPercentage(item, elementId) {
   d3.json("https://ecometerdata.onrender.com/Visualisering3").then(function (
     dataset
   ) {
-    // Access the "foods" array within the JSON data
     let data = dataset.foods;
-
-    // Extract the first item from the "foods" array
-    var dataElement = data[0];
-
-    // Extract the individual properties from the "foodItem" object
-    let time = dataElement.time;
+    let dataElement = data[0];
     let windpower = dataElement.windpower;
     let hydro = dataElement.hydro;
     let solarpower = dataElement.solarpower;
@@ -57,7 +51,10 @@ function dataPercentage(item) {
     }
 
     let percentage = getPercentage(item);
-    console.log(item + " percentage:", percentage + "%");
+    let element = document.getElementById(elementId);
+    if (element) {
+      element.innerHTML = percentage + "%";
+    }
   });
 }
 

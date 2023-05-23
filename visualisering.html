@@ -20,6 +20,11 @@
     <div id="my_dataviz" alt="StreamGraph"></div>
     <script type="text/javascript">
 
+dataPercentage("windpower", "windpowerPercentage");
+dataPercentage("fossil", "fossilPercentage");
+
+
+
       // set the dimensions and margins of the graph
       const margin = { top: 20, right: 30, bottom: 30, left: 60 },
         width = 1000 - margin.left - margin.right,
@@ -143,7 +148,7 @@
     </script>
     <div class="container">
       <div class="column">
-        <a class="neontekst">69%</a>
+        <a class="neontekst" id="windpowerPercentage">69%</a>
         <span class="description">Solenergi</span>
       </div>
       <div class="column">
@@ -201,7 +206,7 @@
         <span class="description">Vandkraft</span>
       </div>
       <div class="column">
-        <a class="dirtytekst">5%</a>
+        <a class="dirtytekst" id="fossilPercentage">5%</a>
         <span class="description">fossile brændsler</span>
       </div>
     </div>
