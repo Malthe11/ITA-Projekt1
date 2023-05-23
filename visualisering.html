@@ -5,119 +5,142 @@
     <title>Visualisering</title>
     <script type="text/javascript" src="d3.js"></script>
     <link rel="stylesheet" href="style2.css" />
+    <script src="blotter.js"></script>
+    <script src="blotter.min.js"></script>
+    <script src="liquidDistortMaterial.js"></script>
+    <script src="functions.js"></script>
   </head>
 
   <body>
     <header>
       <div class="logocontainer">
-        <a href="index.html"><img class="LOGO" src="SVG/projekt1.svg" /></a> 
+        <a href="index.html"><img class="LOGO" src="SVG/projekt1.svg" /></a>
       </div>
     </header>
 
-    <!-- Create a div where the graph will take place -->
-  <div id="my_dataviz"></div>
-
-
-
+    <div id="my_dataviz"></div>
     <script type="text/javascript">
+      // set the dimensions and margins of the graph
+      const margin = { top: 20, right: 30, bottom: 30, left: 60 },
+        width = 1000 - margin.left - margin.right,
+        height = 400 - margin.top - margin.bottom;
 
-// set the dimensions and margins of the graph
-const margin = {top: 20, right: 30, bottom: 30, left: 60},
-    width = 1000 - margin.left - margin.right,
-    height = 400 - margin.top - margin.bottom;
+      // append the svg object to the body of the page
+      const svg = d3
+        .select("#my_dataviz")
+        .append("svg")
+        .attr("width", width + margin.left + margin.right)
+        .attr("height", height + margin.top + margin.bottom)
+        .append("g")
+        .attr("transform", `translate(${margin.left}, ${margin.top})`);
 
-// append the svg object to the body of the page
-const svg = d3.select("#my_dataviz")
-  .append("svg")
-    .attr("width", width + margin.left + margin.right)
-    .attr("height", height + margin.top + margin.bottom)
-  .append("g")
-    .attr("transform",
-          `translate(${margin.left}, ${margin.top})`);
+      // Parse the Data
+      d3.json("https://ecometerdata.onrender.com/Visualisering4").then(
+        function (data) {
+          data = data.streamGraphData;
+          // List of groups = header of the csv files
+          const keys = [
+            "windpower",
+            "hydro",
+            "solarpower",
+            "biomass",
+            "fossil",
+          ];
 
-// Parse the Data
-d3.json("https://ecometerdata.onrender.com/Visualisering4").then(function(data) {
+          // Add X axis
+          const x = d3
+            .scaleLinear()
+            .domain(
+              d3.extent(data, function (d) {
+                return d.time;
+              })
+            )
+            .range([0, width]);
+          svg
+            .append("g")
+            .attr("transform", `translate(0, ${height})`)
+            .call(d3.axisBottom(x).ticks(24));
 
-  data = data.streamGraphData
-  // List of groups = header of the csv files
-  const keys = ["windpower", "hydro", "solarpower", "biomass", "fossil"]
+          // Add Y axis
+          const y = d3.scaleLinear().domain([-3000, 3000]).range([height, 0]);
+          svg.append("g").call(d3.axisLeft(y));
 
-  // Add X axis
-  const x = d3.scaleLinear()
-    .domain(d3.extent(data, function(d) { return d.time; }))
-    .range([ 0, width ]);
-  svg.append("g")
-    .attr("transform", `translate(0, ${height})`)
-    .call(d3.axisBottom(x).ticks(24));
+          // color palette
+          const color = d3
+            .scaleOrdinal()
+            .domain(keys)
+            .range(["#BCEEF0", "blue", "yellow", "green", "black"]);
 
-  // Add Y axis
-  const y = d3.scaleLinear()
-    .domain([-3000, 3000])
-    .range([ height, 0 ]);
-  svg.append("g")
-    .call(d3.axisLeft(y));
+          //stack the data?
+          const stackedData = d3
+            .stack()
+            .offset(d3.stackOffsetSilhouette)
+            .keys(keys)(data);
 
-  // color palette
-  const color = d3.scaleOrdinal()
-    .domain(keys)
-    .range(['#BCEEF0','blue','yellow','green','black'])
+          console.log(stackedData);
+          // Show the areas
+          svg
+            .selectAll("mylayers")
+            .data(stackedData)
+            .join("path")
+            .style("fill", function (d) {
+              return color(d.key);
+            })
+            .attr(
+              "d",
+              d3
+                .area()
+                .x(function (d, i) {
+                  return x(d.data.time);
+                })
+                .y0(function (d) {
+                  return y(d[0]);
+                })
+                .y1(function (d) {
+                  return y(d[1]);
+                })
+            );
 
-  //stack the data?
-  const stackedData = d3.stack()
-    .offset(d3.stackOffsetSilhouette)
-    .keys(keys)
-    (data)
+          const legendWidth = 200;
+          const legendHeight = 20;
+          const legendX = 840;
+          const legendY = -20;
 
-  console.log(stackedData);
-  // Show the areas
-  svg
-    .selectAll("mylayers")
-    .data(stackedData)
-    .join("path")
-      .style("fill", function(d) { return color(d.key); })
-      .attr("d", d3.area()
-        .x(function(d, i) { return x(d.data.time); })
-        .y0(function(d) { return y(d[0]); })
-        .y1(function(d) { return y(d[1]); })
-    )
+          const legend = svg
+            .append("g")
+            .attr("class", "legend")
+            .attr("transform", `translate(${legendX}, ${legendY})`);
 
-    const legendWidth = 200;
-  const legendHeight = 20;
-  const legendX = 840;
-  const legendY = -20;
+          const colorLegend = legend
+            .selectAll(".color-legend")
+            .data(keys)
+            .enter()
+            .append("g")
+            .attr("class", "color-legend")
+            .attr("transform", function (d, i) {
+              return `translate(0, ${i * legendHeight})`;
+            });
 
-  const legend = svg.append("g")
-    .attr("class", "legend")
-    .attr("transform", `translate(${legendX}, ${legendY})`);
+          colorLegend
+            .append("rect")
+            .attr("width", legendHeight)
+            .attr("height", legendHeight)
+            .style("fill", function (d) {
+              return color(d);
+            });
 
-  const colorLegend = legend.selectAll(".color-legend")
-    .data(keys)
-    .enter()
-    .append("g")
-    .attr("class", "color-legend")
-    .attr("transform", function(d, i) {
-      return `translate(0, ${i * legendHeight})`;
-    });
+          colorLegend
+            .append("text")
+            .attr("x", legendHeight + 5)
+            .attr("y", legendHeight / 2)
+            .attr("dy", "0.35em")
+            .text(function (d) {
+              return d;
+            });
+        }
+      );
 
-  colorLegend.append("rect")
-    .attr("width", legendHeight)
-    .attr("height", legendHeight)
-    .style("fill", function(d) {
-      return color(d);
-    });
-
-  colorLegend.append("text")
-    .attr("x", legendHeight + 5)
-    .attr("y", legendHeight / 2)
-    .attr("dy", "0.35em")
-    .text(function(d) {
-      return d;
-    });
-
-
-})
-
-/*
+      /*
 // set the dimensions and margins of the graph
 const margin = {top: 20, right: 30, bottom: 30, left: 60},
     width = 460 - margin.left - margin.right,
@@ -170,7 +193,7 @@ d3.csv("https://raw.githubusercontent.com/holtzy/data_to_viz/master/Example_data
   // Show the areas
   svg
     .selectAll("mylayers")
-    .data(stackedData)  
+    .data(stackedData)
     .join("path")
       .style("fill", function(d) { return color(d.key); })
       .attr("d", d3.area()
@@ -182,18 +205,83 @@ d3.csv("https://raw.githubusercontent.com/holtzy/data_to_viz/master/Example_data
 })
 
 */
-
-
     </script>
+    <div class="container">
+      <div class="column">
+        <a class="neontekst">69%</a>
+        <span class="description">Beskrivelse for kolonne 2</span>
+      </div>
+      <div class="column">
+        <a id="vindtekst"></a>
+        <span class="description">Beskrivelse for kolonne 2</span>
+      </div>
+      <div class="column">
+        <svg
+          class="vandprocent"
+          version="1.1"
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          width="100%"
+          height="100%"
+          viewBox="0 0 574.558 120"
+          enable-background="new 0 0 574.558 100"
+          xml:space="preserve"
+        >
+          <defs>
+            <pattern
+              id="water"
+              width=".25"
+              height="1.1"
+              patternContentUnits="objectBoundingBox"
+            >
+              <path
+                fill="#fff"
+                d="M0.25,1H0c0,0,0-0.659,0-0.916c0.083-0.303,0.158,0.334,0.25,0C0.25,0.327,0.25,1,0.25,1z"
+              />
+            </pattern>
 
+            <text
+              id="text"
+              transform="matrix(1 0 0 1 125 135)"
+              font-size="200"
+            ></text>
+
+            <mask id="text_mask">
+              <use x="0" y="0" xlink:href="#text" opacity="1" fill="#FFFFFF" />
+            </mask>
+          </defs>
+
+          <use id="textElement" x="0" y="0" xlink:href="#text" fill="#DCDCDC" />
+
+          <rect
+            class="water-fill"
+            mask="url(#text_mask)"
+            fill="#2B65EC"
+            x="-400"
+            y="0"
+            width="700"
+            height="400"
+          />
+        </svg>
+        <span class="description">Beskrivelse for kolonne 2</span>
+      </div>
+      <div class="column">
+        <a class="dirtytekst">5%</a>
+        <span class="description">Beskrivelse for kolonne 2</span>
+      </div>
+    </div>
   </body>
   <a href="tips.html"><button type="button">10 Tips</button></a>
-  <a href="facts.html"><button type="button">Facts</button></a> 
+  <a href="facts.html"><button type="button">Facts</button></a>
 </html>
+<script>
+  UpdateVandprocent();
+</script>
 
 <!-- viser output = tekst gemt i localstorage
-      <p id="output"></p>
-    <script type="text/javascript">
-      var savedText = localStorage.getItem("savedText");
-      document.getElementById("output").innerHTML = savedText;
-    </script> -->
+         <p id="output"></p>
+       <script type="text/javascript">
+         var savedText = localStorage.getItem("savedText");
+         document.getElementById("output").innerHTML = savedText;
+</script>
+-->
