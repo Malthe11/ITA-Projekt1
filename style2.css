@@ -45,6 +45,7 @@ body {
   top: 1000px;
   background-color: rgba(46, 59, 34, 63%);
   border-radius: 100px;
+  margin-top: 75px;
 }
 
 .column {
