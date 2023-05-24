@@ -18,12 +18,22 @@
   
           color: rgb(255, 255, 255);
         }
-     
         body {
           background-image: url("bag.JPG");
-          margin: 50px;
-          
+          height: 100vh;
+          overflow-y: scroll; /* Add this if you want to enable scrolling if the content overflows */
+          width: 100%; /* or specify a specific width value */
+          margin: 50px; 
         }
+
+        body, html {
+  margin: 0;
+  padding: 20;
+}
+* {
+  box-sizing: border-box;
+}
+          
         p,h2 {
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   font-size: 20px;
@@ -48,13 +58,13 @@
 }
       </style>
     <body>
-        <h1>Sådan sparer du penge på strømmen</h1>
-</body>
+        <h1>Sådan sparer du penge på strømmen!</h1>
 <h2>Skift til grøn strøm:</h2>
 <center>
 <a href="https://www.bolius.dk/saadan-faar-du-groen-stroem-90843"><img src="tip5.JPG" alt="green" class="round" style="width: 30%"/></a>
 </center>
 <p>Skift til en strømleverandør, der bruger vedvarende energikilder som sol, vind eller vandkraft til at generere elektricitet.</p>
+</body>
 <a href="tip4.html"><button type="button">Tilbage</button></a> 
 <a href="tip6.html"><button type="button">Næste</button></a>
 </html>
