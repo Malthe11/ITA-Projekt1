@@ -66,7 +66,7 @@ app.get("/procentV", async (req, res) => {
     let queryData = await klient.query(qryC);
     res.json({
       ok: true,
-      foods: queryData.rows,
+      grafData: queryData.rows,
     });
   } catch (error) {
     res.json({
@@ -80,7 +80,7 @@ app.get("/procentO", async (req, res) => {
     let queryData = await klient.query(qryD);
     res.json({
       ok: true,
-      streamGraphData: queryData.rows,
+      grafData: queryData.rows,
     });
   } catch (error) {
     res.json({
