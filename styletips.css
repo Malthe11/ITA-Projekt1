@@ -1,0 +1,90 @@
+div {
+  width: 100px;
+  margin: auto;
+  border: 1px solid red;
+}
+h1,
+h2,
+p {
+  color: rgba(255, 255, 255, 0.966);
+}
+body {
+  background-image: url("bag.JPG");
+  height: 100vh;
+  overflow-y: scroll; /* Add this if you want to enable scrolling if the content overflows */
+  width: 100%; /* or specify a specific width value */
+  margin: 50px;
+}
+
+body,
+html {
+  margin: 0;
+  padding: 20;
+}
+* {
+  box-sizing: border-box;
+}
+p,
+h2 {
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  font-size: 20px;
+}
+h1 {
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  font-size: 40px;
+}
+.round {
+  border-radius: 50%; /* sætter en radius på 50% af billedets bredde/højde, hvilket skaber en rund form */
+  overflow: hidden; /* sikrer, at billedet ikke overskrider rammens runde form */
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Højden på containeren bliver sat til viewport-højden */
+}
+.center img {
+  display: block;
+}
+.button {
+  display: inline-block;
+  border-radius: 4px;
+  background-color: #f4511e;
+  border: none;
+  color: #ffffff;
+  text-align: center;
+  font-size: 28px;
+  padding: 20px;
+  width: 200px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+}
+
+.button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.button span:after {
+  content: "\00bb";
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.button:hover span {
+  padding-right: 25px;
+}
+
+.button:hover span:after {
+  opacity: 1;
+  right: 0;
+}
