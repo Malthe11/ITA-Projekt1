@@ -28,11 +28,24 @@ function UpdateVandprocent() {
 }
 var percentageFromDatabase = getRandomNumber; // <-- erstattes med funktionen der giver korrekte procent
 
+const url1 = "https://ecometerdata.onrender.com/";
+let øst1 = "procentO";
+let vest1 = "procentV";
+let del1 = "hej";
+let savedData1 = localStorage.getItem("savedData");
+
+if (savedData1 === "1") {
+  del1 = vest1;
+  console.log("vest");
+} else if (savedData1 === "2") {
+  del1 = øst1;
+  console.log("øst");
+}
 function dataPercentage(item, elementId) {
   return new Promise(function (resolve, reject) {
-    d3.json("https://ecometerdata.onrender.com/Visualisering3")
+    d3.json(url1 + del1)
       .then(function (dataset) {
-        var data = dataset.foods;
+        var data = dataset.grafData;
         var dataElement = data[0];
         let windpower = dataElement.windpower;
         let hydro = dataElement.hydro;

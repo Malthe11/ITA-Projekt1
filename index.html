@@ -7,6 +7,8 @@
   </head>
 
   <body>
+
+
     <header>
       <div class="logocontainer">
         <a href="index.html"><img class="LOGO" src="SVG/projekt1.svg" /></a>
@@ -19,6 +21,7 @@
             <img src="SVG/Vest.svg" class="vestimage"
           /></a>
           <button
+            id = "saveVest"
             onmouseover="forstørbilledevest()"
             onmouseout="nulstilBilledevest()"
             onclick="document.location='visualisering.html'"
@@ -33,6 +36,7 @@
             ><img src="SVG/Øst.svg" class="østimage"
           /></a>
           <button
+            id = "saveØst"
             onmouseover="forstørbilledeøst()"
             onmouseout="nulstilBilledeøst()"
             onclick="document.location='visualisering.html'"
@@ -44,5 +48,20 @@
         </div>
       </div>
     </main>
+    <script>
+      var saveVest = document.getElementById('saveVest');
+    
+      saveVest.addEventListener('click', function() {
+        // Save the value '1' to localStorage
+        localStorage.setItem('savedData', '1');
+      });
+    
+      var saveØst = document.getElementById('saveØst');
+    
+      saveØst.addEventListener('click', function() {
+      // Save the value '2' to localStorage
+      localStorage.setItem('savedData', '2');
+      });
+      </script>
   </body>
 </html>

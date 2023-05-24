@@ -39,7 +39,24 @@
         .attr("transform", `translate(${margin.left}, ${margin.top})`);
 
       // Parse the Data
-      d3.json("https://ecometerdata.onrender.com/Visualisering4").then(
+
+const url = "https://ecometerdata.onrender.com/";
+let vest = "grafV";
+let øst = "grafO"; //2
+let savedData = localStorage.getItem('savedData');
+let del2 = "hej";
+console.log("savedData = " + savedData)
+
+
+if (savedData === "1") {
+  del2 = vest;
+  console.log("vest");
+} else if (savedData === "2") {
+  del2 = øst;
+  console.log("øst");
+}
+
+      d3.json(url + del2).then(
         function (data) {
           data = data.streamGraphData;
           // List of groups = header of the csv files
