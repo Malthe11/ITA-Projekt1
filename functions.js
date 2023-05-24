@@ -94,7 +94,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     var percentageString = await getWindpowerPercentage();
     var text = new Blotter.Text(percentageString, {
       family: "sans-serif",
-      size: 140,
+      size: 120,
       fill: "#FFF",
     });
     // Further code to use the 'text' object

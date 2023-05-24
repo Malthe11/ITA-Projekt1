@@ -99,7 +99,7 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 20px;
+  padding: 10px;
   margin: 15px;
 }
 
@@ -118,6 +118,7 @@ body {
   font-size: 100px;
   color: #75584b;
   text-shadow: 0 0 7px #ffffff;
+  margin-bottom: 40px;
 }
 #text {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
