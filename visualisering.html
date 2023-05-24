@@ -20,7 +20,6 @@
     <h1 class="visuoverskrift">Hvor kommer energien fra?</h1>
     <div id="my_dataviz" alt="StreamGraph"></div>
     <script type="text/javascript">
-      
       dataPercentage("solarpower", "solarPercentage");
       dataPercentage("fossil", "fossilPercentage");
       //dataPercentage("windpower", "vindtekst");
@@ -145,16 +144,21 @@
         }
       );
     </script>
+    <h1
+      style="margin-top: 70px; font-family: Verdana, Geneva, Tahoma, sans-serif"
+    >
+      Samlede energiforburg i %
+    </h1>
     <div class="container">
-      <div class="column">
+      <div class="column" style="cursor: pointer" onclick="åbensolgraf()">
         <span class="description">Solenergi</span>
         <a class="neontekst" id="solarPercentage">69%</a>
       </div>
-      <div class="column">
+      <div class="column" style="cursor: pointer" onclick="åbenvindgraf()">
         <span class="description">Vindenergi</span>
         <a id="vindtekst"></a>
       </div>
-      <div class="column">
+      <div class="column" style="cursor: pointer" onclick="åbenvandgraf()">
         <span class="description">Vandkraft</span>
         <svg
           class="vandprocent"
@@ -187,11 +191,23 @@
             ></text>
 
             <mask id="text_mask">
-              <use x="0" y="0" xlink:href="#text" opacity="1" fill="#FFFFFF" />
+              <use
+                x="-80"
+                y="0"
+                xlink:href="#text"
+                opacity="1"
+                fill="#FFFFFF"
+              />
             </mask>
           </defs>
 
-          <use id="textElement" x="0" y="0" xlink:href="#text" fill="#DCDCDC" />
+          <use
+            id="textElement"
+            x="-80px"
+            y="0"
+            xlink:href="#text"
+            fill="#DCDCDC"
+          />
 
           <rect
             class="water-fill"
@@ -199,17 +215,19 @@
             fill="#2B65EC"
             x="-400"
             y="0"
-            width="700"
+            width="800"
             height="400"
           />
         </svg>
       </div>
-      <div class="column">
-        <span class="description">fossile brændsler</span>
+      <div class="column" style="cursor: pointer" onclick="åbenfossilgraf()">
+        <span class="description" style="margin-bottom: 50px"
+          >fossile brændsler</span
+        >
         <a class="dirtytekst" id="fossilPercentage">5%</a>
       </div>
     </div>
-    <div style="margin-top: 20px">
+    <div style="margin-top: 35px">
       <a id="tekstoverknapper">
         ↓ Få tips og tricks til en bæredygtig hverdag ↓
       </a>
@@ -223,8 +241,6 @@
       >
     </div>
   </body>
-  <a href="tips.html"><button type="button">10 Tips</button></a>
-  <a href="facts.html"><button type="button">Facts</button></a>
 </html>
 <script>
   UpdateVandprocent();
