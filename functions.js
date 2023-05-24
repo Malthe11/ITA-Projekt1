@@ -113,7 +113,19 @@ document.addEventListener("DOMContentLoaded", async function () {
 
   const scope = blotter.forText(text);
 
-  // Indsæt tekstelementet i HTML
   const dinmorElement = document.getElementById("vindtekst");
   scope.appendTo(dinmorElement);
 });
+
+function åbensolgraf() {
+  window.location.href = "graf.html"; //ændre disse til vores rigtige grafside
+}
+function åbenvindgraf() {
+  window.location.href = "graf.html"; //ændre disse til vores rigtige grafside
+}
+function åbenvandgraf() {
+  window.location.href = "graf.html"; //ændre disse til vores rigtige grafside
+}
+function åbenfossilgraf() {
+  window.location.href = "graf.html"; //ændre disse til vores rigtige grafside
+}

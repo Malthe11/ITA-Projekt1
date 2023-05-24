@@ -111,13 +111,34 @@ body {
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
   text-shadow: 0 0 5px #fff, 0 0 6px #ffff00, 0 0 5px #fff;
   animation: text-shadow-animation 5s infinite alternate;
+  transition: transform 0.3s;
 }
+.neontekst:hover {
+  transform: scale(1.1);
+}
+
 .dirtytekst {
   font-family: "ryder dirty", sans-serif;
   font-size: 100px;
   color: #75584b;
   text-shadow: 0 0 7px #ffffff;
   margin-bottom: 40px;
+  transition: transform 0.3s;
+}
+.dirtytekst:hover {
+  transform: scale(1.1);
+}
+.b-canvas {
+  transition: transform 0.3s;
+}
+.b-canvas:hover {
+  transform: scale(1.1);
+}
+.vandprocent {
+  transition: transform 0.3s;
+}
+.vandprocent:hover {
+  transform: scale(1.1);
 }
 #text {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
