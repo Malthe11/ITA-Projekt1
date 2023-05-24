@@ -9,10 +9,31 @@
     <title>Facts </title>
     </head>
     <style>
+      * {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Style the header */
+header {
+  background-color: #666;
+  padding: 30px;
+  text-align: center;
+  font-size: 35px;
+  color: white;
+}
+/* Clear floats after the columns */
+section::after {
+  content: "";
+  display: table;
+  clear: both;
+}
       div  { 
   width: 100px;
   margin: auto;
-  border: 1px solid red;
 }
         h1,h2,p{
   
@@ -37,21 +58,19 @@
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   font-size: 40px;
 }
-
-.round {
-  border-radius: 50%; /* sætter en radius på 50% af billedets bredde/højde, hvilket skaber en rund form */
-  overflow: hidden; /* sikrer, at billedet ikke overskrider rammens runde form */
+.percentage-tag {
+  font-size: 48px; /* Adjust the size as per your preference */
+  font-weight: bold; /* Optionally, make it bold */
+  text-decoration: underline;
+  color: white
+}
+.minihead {
+  font-size: 15px; /* Adjust the size as per your preference */
+  font-weight: bold; /* Optionally, make it bold */
+  color: white
 }
 
-.center {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh; /* Højden på containeren bliver sat til viewport-højden */
-}
-.center img {
-  display: block;
-}
+
 
       </style>
     <body>
@@ -59,26 +78,79 @@
         <h1>Facts om strøm</h1>
         
 </body>
-<h2>Vidste du at;</h2>
+<h2>Vidste du at:</h2>
+
+<secyion>  
+  <nav>
+    <div class="percentage-tag">
+      99,99%
+    </div>
+    <div class="minihead">
+      procent
+    </div>
+</nav></secyion>
 <p>Danskerne har strøm i stikket <span style="color:black;font-weight:bold">99,99%</span> procent af tiden. Den bliver leveret gennem et elnet, der er cirka 160.000 km langt.</p><a href="https://www.vestforsyning.dk/nyheder/nyheder/forestil-dig-en-verden-uden-el/"></a>
 <!--https://www.vestforsyning.dk/nyheder/nyheder/forestil-dig-en-verden-uden-el/-->
 
-<h2>Elforbruget;</h2>
-<p> Det samlede danske elforbrug var i 2022 på <span style="color:black;font-weight:bold">35,2 TWh</span> . Det er et fald på 5 procent i forhold til 2021.</p>
-<!--https://greenpowerdenmark.dk/fakta-om-groen-energi-->
+<h2>X-Factor:</h2>
 
-<h2>Eksport;</h2>
-<p>Så meget beløb Danmarks eksport af energiteknologi og -service sig til i 2021. Alene vindenergiteknologi stod for eksport for <span style="color:black;font-weight:bold">49,1 mia</span>  kr. i 2021. Eksporten af nye energiteknologier herunder Power-to-X ventes at øge værdien betragteligt mod 2030.</p>
-<!--https://greenpowerdenmark.dk/fakta-om-groen-energi-->
+<secyion>  
+  <nav>
+    <div class="percentage-tag">
+    139
+    </div>
+    <div class="minihead">
+    afsnit
+    </div>
+</nav></secyion>
 
-<h2>Hvor selvforsynende er Danmark med strøm;</h2>
-<p>Danmarks selvforsyningsgrad for energi var i 2021 på 55 pct. Hermed menes, at Danmarks produktion af energi sidste år dækkede 55 pct. af den energi, som Danmark forbrugte i form af råolie, naturgas og vedvarende energi mm.</p>
-<!--https://ens.dk/presse/energiforbruget-steg-sidste-aar-->
+<p> Et sving fra en vindmølle generer nok strøm til, at man kan se <span style="color:black;font-weight:bold">139 afsnit</span> X-Factor.</p>
+<!--https://larko.dk/en-vindmoelle-rotation/-->
 
-  <h2>Hvor kommer strømmen fra i Danmark;</h2>
-<p>Særligt i form af norsk og svensk vandkraft, men i stigende grad også el produceret på vindmøller og solceller fra Tyskland. Vi importerer også en andel af atomkraft, særligt fra Sverige.</p>
-<!--https://energinet.dk/el/gron-el/eldeklarationer/hvor-kommer-strommen-fra/-->
+<h2>Elcykel:</h2>
 
+<secyion>  
+  <nav>
+    <div class="percentage-tag">
+    1270
+    </div>
+    <div class="minihead">
+    km
+    </div>
+</nav></secyion>
+
+<p>Et sving fra en vindmølle generer nok strøm til, at man kan køre <span style="color:black;font-weight:bold">1270 km</span> på en elcykel</p>
+<!--https://videnomklima.dk/fun-facts-fra-verden-viden-du-ikke-vidste-du-havde-brug-for-at-tilegne-dig/-->
+
+<h2>Pizza:</h2>
+
+<secyion>  
+  <nav>
+    <div class="percentage-tag">
+    79
+    </div>
+    <div class="minihead">
+      stk.
+    </div>
+</nav></secyion>
+
+<p>Et sving fra en vindmølle generer nok strøm til, at man kan varme <span style="color:black;font-weight:bold">79 pizzaer</span> i en mikroovn.</p>
+<!--https://larko.dk/en-vindmoelle-rotation/-->
+
+  <h2>Løbebånd:</h2>
+
+  <secyion>  
+    <nav>
+      <div class="percentage-tag">
+      7
+      </div>
+      <div class="minihead">
+      timer
+      </div>
+  </nav></secyion>
+
+<p>Et sving fra en vindmølle generer nok strøm til, at man kan løbe 7 timer på et løbebånd.</p>
+<!--https://larko.dk/en-vindmoelle-rotation/-->
 <a href="visualisering.html"><button type="button">Tilbage</button></a>
 <a href="tips.html"><button type="button">10 Tips</button></a>
 </html> 
