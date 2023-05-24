@@ -28,6 +28,50 @@
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
+.knapperdiv {
+  display: flex;
+  flex: 1;
+}
+
+.knapvisu {
+  appearance: none;
+  background-color: #ffffff;
+  border-radius: 40em;
+  border-style: none;
+  box-sizing: border-box;
+  color: #000000;
+  cursor: pointer;
+  display: inline-block;
+  font-family: -apple-system, sans-serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: -0.24px;
+  margin: 50px;
+  outline: non;
+  padding: 1rem 1.3rem;
+  quotes: auto;
+  text-align: center;
+  text-decoration: none;
+  transition: all 0.15s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  margin-top: 40px;
+  width: 170px;
+}
+
+#tekstoverknapper {
+  font-size: 30px;
+  margin-top: 30px;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+
+.knapvisu:hover {
+  background-color: #dbfbef;
+  box-shadow: #98f9d7 0 -6px 8px inset;
+  transform: scale(1.125);
+}
 body {
   display: flex;
   align-items: center;
@@ -71,7 +115,7 @@ body {
 }
 .dirtytekst {
   font-family: "ryder dirty", sans-serif;
-  font-size: 140px;
+  font-size: 100px;
   color: #75584b;
   text-shadow: 0 0 7px #ffffff;
 }
