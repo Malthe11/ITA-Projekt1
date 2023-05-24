@@ -75,7 +75,7 @@ app.get("/procentV", async (req, res) => {
     });
   }
 });
-app.get("/procentØ", async (req, res) => {
+app.get("/procentO", async (req, res) => {
   try {
     let queryData = await klient.query(qryD);
     res.json({
@@ -104,7 +104,7 @@ app.get("/grafV", async (req, res) => {
     });
   }
 });
-app.get("/grafØ", async (req, res) => {
+app.get("/grafO", async (req, res) => {
   try {
     let queryData = await klient.query(qryF);
     res.json({
