@@ -7,9 +7,8 @@
   </head>
 
   <body>
-
-
     <header>
+      <a class="overskriften">VElkommen søde</a>
       <div class="logocontainer">
         <a href="index.html"><img class="LOGO" src="SVG/projekt1.svg" /></a>
       </div>
@@ -21,7 +20,7 @@
             <img src="SVG/Vest.svg" class="vestimage"
           /></a>
           <button
-            id = "saveVest"
+            id="saveVest"
             onmouseover="forstørbilledevest()"
             onmouseout="nulstilBilledevest()"
             onclick="document.location='visualisering.html'"
@@ -36,7 +35,7 @@
             ><img src="SVG/Øst.svg" class="østimage"
           /></a>
           <button
-            id = "saveØst"
+            id="saveØst"
             onmouseover="forstørbilledeøst()"
             onmouseout="nulstilBilledeøst()"
             onclick="document.location='visualisering.html'"
@@ -49,19 +48,19 @@
       </div>
     </main>
     <script>
-      var saveVest = document.getElementById('saveVest');
-    
-      saveVest.addEventListener('click', function() {
+      var saveVest = document.getElementById("saveVest");
+
+      saveVest.addEventListener("click", function () {
         // Save the value '1' to localStorage
-        localStorage.setItem('savedData', '1');
+        localStorage.setItem("savedData", "1");
       });
-    
-      var saveØst = document.getElementById('saveØst');
-    
-      saveØst.addEventListener('click', function() {
-      // Save the value '2' to localStorage
-      localStorage.setItem('savedData', '2');
+
+      var saveØst = document.getElementById("saveØst");
+
+      saveØst.addEventListener("click", function () {
+        // Save the value '2' to localStorage
+        localStorage.setItem("savedData", "2");
       });
-      </script>
+    </script>
   </body>
 </html>
