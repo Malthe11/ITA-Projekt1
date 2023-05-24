@@ -114,7 +114,7 @@ body {
   transition: transform 0.3s;
 }
 .neontekst:hover {
-  transform: scale(1.1);
+  transform: scale(1.05);
 }
 
 .dirtytekst {
@@ -126,19 +126,19 @@ body {
   transition: transform 0.3s;
 }
 .dirtytekst:hover {
-  transform: scale(1.1);
+  transform: scale(1.05);
 }
 .b-canvas {
   transition: transform 0.3s;
 }
 .b-canvas:hover {
-  transform: scale(1.1);
+  transform: scale(1.05);
 }
 .vandprocent {
   transition: transform 0.3s;
 }
 .vandprocent:hover {
-  transform: scale(1.1);
+  transform: scale(1.05);
 }
 #text {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
