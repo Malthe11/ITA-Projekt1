@@ -37,8 +37,8 @@ let svg = d3.select("body")
 let start = 0;
 
 function show(){
-  d3.json("https://ecometerdata.onrender.com/Visualisering1").then(function(dataset) {
-  dataset = dataset.dataWind;
+  d3.json("https://ecometerdata.onrender.com/Windv").then(function(dataset) {
+  dataset = dataset.graf2;
 
   let data = [];
   for (let i=0; i < 12; i++)
