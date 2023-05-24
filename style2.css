@@ -89,7 +89,6 @@ body {
   top: 1000px;
   background-color: rgba(46, 59, 34, 63%);
   border-radius: 100px;
-  margin-top: 75px;
 }
 
 .column {
@@ -108,7 +107,7 @@ body {
 }
 .neontekst {
   color: #fff;
-  font-size: 150px;
+  font-size: 140px;
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
   text-shadow: 0 0 5px #fff, 0 0 6px #ffff00, 0 0 5px #fff;
   animation: text-shadow-animation 5s infinite alternate;
