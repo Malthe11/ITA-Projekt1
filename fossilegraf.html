@@ -12,6 +12,14 @@
 
     <div>
       <button type="button" class="knap" onclick="next()">next</button>
+      <button
+        type="button"
+        class="knap"
+        style="left: 400px"
+        onclick="//tilbage_på_graf funktion"
+      >
+        Tilbage
+      </button>
       <script>
         const margin = { top: 20, right: 20, bottom: 40, left: 60 };
         const w = 900 - margin.left - margin.right;
@@ -30,26 +38,23 @@
 
         let start = 0;
 
-        let url2 = "https://ecometerdata.onrender.com/" 
-let v = "fossilv"
-let o = "fossilo"
-let del3 = "hej"
-let savedData2 = localStorage.getItem('savedData');
-console.log("fossil")
+        let url2 = "https://ecometerdata.onrender.com/";
+        let v = "fossilv";
+        let o = "fossilo";
+        let del3 = "hej";
+        let savedData2 = localStorage.getItem("savedData");
+        console.log("fossil");
 
-if (savedData2 === "1") {
-  del3 = v;
-  console.log("vest");
-} else if (savedData2 === "2") {
-  del3 = o;
-  console.log("øst");
-}
-
+        if (savedData2 === "1") {
+          del3 = v;
+          console.log("vest");
+        } else if (savedData2 === "2") {
+          del3 = o;
+          console.log("øst");
+        }
 
         function show() {
-          d3.json(url2 + del3).then(function (
-            dataset
-          ) {
+          d3.json(url2 + del3).then(function (dataset) {
             dataset = dataset.graf2;
 
             let data = [];
