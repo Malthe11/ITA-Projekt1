@@ -17,7 +17,13 @@
         <a href="index.html"><img class="LOGO" src="SVG/projekt1.svg" /></a>
       </div>
     </header>
-    <h1 class="visuoverskrift">Hvor kommer energien fra?</h1>
+    <h1 class="visuoverskrift">
+      Hvor kommer energien fra?
+      <script>
+        localStorage.getItem("savedData");
+      </script>
+    </h1>
+    <h2></h2>
     <div id="my_dataviz" alt="StreamGraph"></div>
     <script type="text/javascript">
       dataPercentage("solarpower", "solarPercentage");
@@ -40,21 +46,25 @@
 
       // Parse the Data
 
-const url = "https://ecometerdata.onrender.com/";
-let vest = "grafV";
-let øst = "grafO"; //2
-let savedData = localStorage.getItem('savedData');
-let del2 = "hej";
-console.log("savedData = " + savedData)
+      const url = "https://ecometerdata.onrender.com/";
+      let vest = "grafV";
+      let øst = "grafO"; //2
+      let savedData = localStorage.getItem("savedData");
+      let del2 = "hej";
+      console.log("savedData = " + savedData);
 
+      if (savedData === "1") {
+        del2 = vest;
+        console.log("vest");
+      } else if (savedData === "2") {
+        del2 = øst;
+        console.log("øst");
+      }
 
-if (savedData === "1") {
-  del2 = vest;
-  console.log("vest");
-} else if (savedData === "2") {
-  del2 = øst;
-  console.log("øst");
-}
+      d3.json(url + del2).then(function (data) {
+        data = data.streamGraphData;
+        // List of groups = header of the csv files
+        const keys = ["windpower", "hydro", "solarpower", "biomass", "fossil"];
 
       d3.json(url + del2).then(
         function (data) {
@@ -107,59 +117,90 @@ if (savedData === "1") {
             .style("fill", function (d) {
               return color(d.key);
             })
-            .attr(
-              "d",
-              d3
-                .area()
-                .x(function (d, i) {
-                  return x(d.data.time);
-                })
-                .y0(function (d) {
-                  return y(d[0]);
-                })
-                .y1(function (d) {
-                  return y(d[1]);
-                })
-            );
+          )
+          .range([0, width]);
+        svg
+          .append("g")
+          .attr("transform", `translate(0, ${height})`)
+          .call(d3.axisBottom(x).ticks(24));
 
-          const legendWidth = 200;
-          const legendHeight = 20;
-          const legendX = 840;
-          const legendY = -20;
+        // Add Y axis
+        const y = d3.scaleLinear().domain([-3000, 3000]).range([height, 0]);
+        svg.append("g").call(d3.axisLeft(y));
 
-          const legend = svg
-            .append("g")
-            .attr("class", "legend")
-            .attr("transform", `translate(${legendX}, ${legendY})`);
+        // color palette
+        const color = d3
+          .scaleOrdinal()
+          .domain(keys)
+          .range(["#BCEEF0", "blue", "yellow", "green", "black"]);
 
-          const colorLegend = legend
-            .selectAll(".color-legend")
-            .data(keys)
-            .enter()
-            .append("g")
-            .attr("class", "color-legend")
-            .attr("transform", function (d, i) {
-              return `translate(0, ${i * legendHeight})`;
-            });
+        //stack the data?
+        const stackedData = d3
+          .stack()
+          .offset(d3.stackOffsetSilhouette)
+          .keys(keys)(data);
 
-          colorLegend
-            .append("rect")
-            .attr("width", legendHeight)
-            .attr("height", legendHeight)
-            .style("fill", function (d) {
-              return color(d);
-            });
+        console.log(stackedData);
+        // Show the areas
+        svg
+          .selectAll("mylayers")
+          .data(stackedData)
+          .join("path")
+          .style("fill", function (d) {
+            return color(d.key);
+          })
+          .attr(
+            "d",
+            d3
+              .area()
+              .x(function (d, i) {
+                return x(d.data.time);
+              })
+              .y0(function (d) {
+                return y(d[0]);
+              })
+              .y1(function (d) {
+                return y(d[1]);
+              })
+          );
 
-          colorLegend
-            .append("text")
-            .attr("x", legendHeight + 5)
-            .attr("y", legendHeight / 2)
-            .attr("dy", "0.35em")
-            .text(function (d) {
-              return d;
-            });
-        }
-      );
+        const legendWidth = 200;
+        const legendHeight = 20;
+        const legendX = 840;
+        const legendY = -20;
+
+        const legend = svg
+          .append("g")
+          .attr("class", "legend")
+          .attr("transform", `translate(${legendX}, ${legendY})`);
+
+        const colorLegend = legend
+          .selectAll(".color-legend")
+          .data(keys)
+          .enter()
+          .append("g")
+          .attr("class", "color-legend")
+          .attr("transform", function (d, i) {
+            return `translate(0, ${i * legendHeight})`;
+          });
+
+        colorLegend
+          .append("rect")
+          .attr("width", legendHeight)
+          .attr("height", legendHeight)
+          .style("fill", function (d) {
+            return color(d);
+          });
+
+        colorLegend
+          .append("text")
+          .attr("x", legendHeight + 5)
+          .attr("y", legendHeight / 2)
+          .attr("dy", "0.35em")
+          .text(function (d) {
+            return d;
+          });
+      });
     </script>
     <h1
       style="margin-top: 70px; font-family: Verdana, Geneva, Tahoma, sans-serif"
