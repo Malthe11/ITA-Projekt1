@@ -1,0 +1,68 @@
+
+* {
+  box-sizing: border-box;
+}
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+/* Style the header */
+header {
+  background-color: #666;
+  padding: 30px;
+  text-align: center;
+  font-size: 35px;
+  color: white;
+}
+/* Clear floats after the columns */
+section::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+div {
+  width: 100px;
+  margin: auto;
+}
+p {
+  color: rgb(255, 255, 255);
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  font-size: 20px;
+}
+h1 {
+    font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+      "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+    font-size: 40px;
+    color:white
+}
+h2 {
+  color: rgb(1, 1, 1);
+  background-color: white;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  font-size: 20px;
+}
+body {
+  background-image: url("bag.JPG");
+  margin: 50px;
+}
+.percentage-container {
+    display: flex;
+    align-items: center;
+  }
+
+  .percentage-tag {
+    font-size: 48px;
+    font-weight: bold;
+    text-decoration: underline;
+    color:white
+  }
+.text-section {
+    margin-left: 10px; /* Adjust the spacing between the percentage and text */
+  }
+  
+.minihead {
+    font-size: 10px;
+    font-weight: bold;
+    color:white
+  }
