@@ -1,0 +1,75 @@
+body {
+  display: flex;
+  align-items: center;
+  background-image: url("https://img.freepik.com/free-vector/background-gradient-green-tones_23-2148382072.jpg");
+  background-size: cover;
+  flex-direction: column;
+}
+
+h1 {
+  font-size: 45px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.LOGO {
+  position: absolute;
+  top: 15px;
+  left: 30px;
+  width: 300px;
+}
+
+.logocontainer {
+  width: 0;
+  height: 75px;
+  overflow: hidden;
+}
+
+.logocontainer img {
+  width: 300px;
+  height: 100px;
+  object-fit: cover;
+  transition: transform 0.3s;
+}
+
+.logocontainer:hover img {
+  transform: scale(1.1);
+}
+
+.knap {
+  position: absolute;
+  bottom: 0;
+  left: 75%;
+  margin-bottom: 15px;
+  transform: translateX(-50%);
+  background-color: #fff;
+  border: 0 solid #e2e8f0;
+  border-radius: 1.5rem;
+  box-sizing: border-box;
+  color: #0d172a;
+  cursor: pointer;
+  display: inline-block;
+  font-family: "Basier circle", -apple-system, system-ui, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-size: 1.1rem;
+  font-weight: 600;
+  line-height: 1;
+  padding: 1rem 1.6rem;
+  text-align: center;
+  text-decoration: none #0d172a solid;
+  transition: all 0.1s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0px 1px 2px rgba(166, 175, 195, 0.25);
+  touch-action: manipulation;
+}
+
+.knap:hover {
+  background-color: #1e293b;
+  color: #fff;
+}
+
+@media (min-width: 768px) {
+  .knap {
+    font-size: 1.125rem;
+    padding: 1rem 2rem;
+  }
+}
