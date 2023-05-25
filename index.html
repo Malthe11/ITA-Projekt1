@@ -10,13 +10,14 @@
     <header>
       <div class="logocontainer">
         <a href="index.html"><img class="LOGO" src="SVG/projekt1.svg" /></a>
+        <text>Undersøg din region</text>
       </div>
     </header>
     <main>
       <div class="container">
         <div class="vest">
           <a href="visualisering.html">
-            <img src="SVG/Vest.svg" class="vestimage" id = "saveVest"
+            <img src="SVG/Vest.svg" class="vestimage" id="saveVest"
           /></a>
           <button
             id="saveVest2"
@@ -31,7 +32,7 @@
         </div>
         <div class="øst">
           <a href="visualisering.html"
-            ><img src="SVG/Øst.svg" class="østimage" id ="saveØst"
+            ><img src="SVG/Øst.svg" class="østimage" id="saveØst"
           /></a>
           <button
             id="saveØst2"
@@ -61,7 +62,6 @@
 
       var saveØst = document.getElementById("saveØst");
       var saveØst2 = document.getElementById("saveØst2");
-
 
       saveØst.addEventListener("click", function () {
         // Save the value '2' to localStorage
