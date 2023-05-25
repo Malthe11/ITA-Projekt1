@@ -13,7 +13,125 @@
     <div>
       <button type="button" class="knap" onclick="next()">next</button>
       <script>
-        //vandgraf her
+        const margin = { top: 20, right: 20, bottom: 40, left: 60 };
+        const w = 900 - margin.left - margin.right;
+        const h = 500 - margin.top - margin.bottom;
+
+        let svg = d3
+          .select("body")
+          .append("svg")
+          .attr("width", w + margin.left + margin.right)
+          .attr("height", h + margin.top + margin.bottom)
+          .append("g")
+          .attr(
+            "transform",
+            "translate(" + margin.left + "," + margin.top + ")"
+          );
+
+        let start = 0;
+
+        let url2 = "https://ecometerdata.onrender.com/" 
+let v = "hydrov"
+let o = "hydroo"
+let del3 = "hej"
+let savedData2 = localStorage.getItem('savedData');
+console.log("hydro")
+
+if (savedData2 === "1") {
+  del3 = v;
+  console.log("vest");
+} else if (savedData2 === "2") {
+  del3 = o;
+  console.log("øst");
+}
+
+
+        function show() {
+          d3.json(url2 + del3).then(function (
+            dataset
+          ) {
+            dataset = dataset.graf2;
+
+            let data = [];
+            for (let i = 0; i < 12; i++) data.push(dataset[i + start]);
+
+            // Define the scales
+            const yScale = d3
+              .scaleLinear()
+              .domain([
+                0,
+                d3.max(data, function (d) {
+                  return d.hydro;
+                }),
+              ])
+              .range([h, 0]);
+
+            const xScale = d3
+              .scaleBand()
+              .domain(
+                data.map(function (d) {
+                  return d.time;
+                })
+              )
+              .range([0, w]);
+
+            // Create the bars
+            svg
+              .selectAll("rect")
+              .data(data)
+              .enter()
+              .append("rect")
+              .attr("x", function (d, i) {
+                return w / (data.length * 4) + i * (w / data.length);
+              })
+              .attr("y", function (d) {
+                return yScale(d.hydro);
+              })
+              .attr("width", w / (data.length * 2))
+              .attr("height", function (d) {
+                return h - yScale(d.hydro);
+              })
+              .attr("fill", "blue");
+
+            // Create the y-axis
+            const yAxis = d3.axisLeft(yScale).tickFormat(function (d) {
+              return d + "kWh";
+            });
+            svg.append("g").attr("class", "y-axis").call(yAxis);
+
+            // Create the x-axis
+
+            const xAxis = d3.axisBottom(xScale).tickFormat(function (d) {
+              const hour = "Kl." + d.substring(11, 13); // Slice the hour portion from the timestamp
+              return hour;
+            });
+            svg
+              .append("g")
+              .attr("class", "x-axis")
+              .attr("transform", "translate(0," + h + ")")
+              .call(xAxis);
+          });
+        }
+
+        function next() {
+          d3.select("svg").remove();
+          start = start + 12;
+          if (start >= 72) {
+            start = start == 0;
+          }
+          svg = d3
+            .select("body")
+            .append("svg")
+            .attr("width", w + margin.left + margin.right)
+            .attr("height", h + margin.top + margin.bottom)
+            .append("g")
+            .attr(
+              "transform",
+              "translate(" + margin.left + "," + margin.top + ")"
+            );
+          show();
+        }
+        show();
       </script>
     </div>
   </body>
