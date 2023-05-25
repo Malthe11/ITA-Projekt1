@@ -2,11 +2,9 @@
 * {
   box-sizing: border-box;
 }
-
 body {
   font-family: Arial, Helvetica, sans-serif;
 }
-
 /* Style the header */
 header {
   background-color: #666;
@@ -36,8 +34,7 @@ h1 {
       "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
     font-size: 40px;
     color:white
-  }
-
+}
 h2 {
   color: rgb(1, 1, 1);
   background-color: white;
@@ -45,25 +42,22 @@ h2 {
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
   font-size: 20px;
 }
-
 body {
   background-image: url("bag.JPG");
   margin: 50px;
 }
-
 .percentage-container {
     display: flex;
     align-items: center;
   }
-  
+
   .percentage-tag {
     font-size: 48px;
     font-weight: bold;
     text-decoration: underline;
     color:white
   }
-
-  .text-section {
+.text-section {
     margin-left: 10px; /* Adjust the spacing between the percentage and text */
   }
   
