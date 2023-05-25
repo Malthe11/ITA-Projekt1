@@ -19,7 +19,7 @@
             <img src="SVG/Vest.svg" class="vestimage" id = "saveVest"
           /></a>
           <button
-            id="saveVest"
+            id="saveVest2"
             onmouseover="forstørbilledevest()"
             onmouseout="nulstilBilledevest()"
             onclick="document.location='visualisering.html'"
@@ -34,7 +34,7 @@
             ><img src="SVG/Øst.svg" class="østimage" id ="saveØst"
           /></a>
           <button
-            id="saveØst"
+            id="saveØst2"
             onmouseover="forstørbilledeøst()"
             onmouseout="nulstilBilledeøst()"
             onclick="document.location='visualisering.html'"
@@ -48,15 +48,26 @@
     </main>
     <script>
       var saveVest = document.getElementById("saveVest");
+      var saveVest2 = document.getElementById("saveVest2");
 
       saveVest.addEventListener("click", function () {
         // Save the value '1' to localStorage
         localStorage.setItem("savedData", "1");
       });
+      saveVest2.addEventListener("click", function () {
+        // Save the value '1' to localStorage
+        localStorage.setItem("savedData", "1");
+      });
 
       var saveØst = document.getElementById("saveØst");
+      var saveØst2 = document.getElementById("saveØst2");
+
 
       saveØst.addEventListener("click", function () {
+        // Save the value '2' to localStorage
+        localStorage.setItem("savedData", "2");
+      });
+      saveØst2.addEventListener("click", function () {
         // Save the value '2' to localStorage
         localStorage.setItem("savedData", "2");
       });
