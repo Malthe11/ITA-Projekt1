@@ -16,7 +16,7 @@
         type="button"
         class="knap"
         style="left: 400px"
-        onclick="//tilbage_på_graf funktion"
+        onclick="tilbage()"
       >
         Tilbage
       </button>
@@ -117,6 +117,25 @@
               .attr("transform", "translate(0," + h + ")")
               .call(xAxis);
           });
+        }
+        function tilbage() {
+          d3.select("svg").remove();
+          start = start - 12;
+          if (start <= 0) {
+            start = start == 72;
+          }
+
+          svg = d3
+            .select("body")
+            .append("svg")
+            .attr("width", w + margin.left + margin.right)
+            .attr("height", h + margin.top + margin.bottom)
+            .append("g")
+            .attr(
+              "transform",
+              "translate(" + margin.left + "," + margin.top + ")"
+            );
+          show();
         }
 
         function next() {
