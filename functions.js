@@ -127,14 +127,14 @@ document.addEventListener("DOMContentLoaded", async function () {
 });
 
 function åbensolgraf() {
-  window.location.href = "graf.html"; //ændre disse til vores rigtige grafside
+  window.location.href = "solgraf.html"; //ændre disse til vores rigtige grafside
 }
 function åbenvindgraf() {
   window.location.href = "vindgraf.html"; //ændre disse til vores rigtige grafside
 }
 function åbenvandgraf() {
-  window.location.href = "graf.html"; //ændre disse til vores rigtige grafside
+  window.location.href = "vandgraf.html"; //ændre disse til vores rigtige grafside
 }
 function åbenfossilgraf() {
-  window.location.href = "graf.html"; //ændre disse til vores rigtige grafside
+  window.location.href = "fossilegraf.html"; //ændre disse til vores rigtige grafside
 }
