@@ -26,6 +26,7 @@ function UpdateVandprocent() {
       console.log("Error:", error);
     });
 }
+var percentageFromDatabase = getRandomNumber; // <-- erstattes med funktionen der giver korrekte procent
 
 const url1 = "https://ecometerdata.onrender.com/";
 let øst1 = "procentO";
@@ -98,6 +99,9 @@ async function getWindpowerPercentage() {
   }
 }
 
+function getRandomNumber() {
+  return Math.floor(Math.random() * 101) + "%";
+}
 document.addEventListener("DOMContentLoaded", async function () {
   try {
     var percentageString = await getWindpowerPercentage();
@@ -127,14 +131,14 @@ document.addEventListener("DOMContentLoaded", async function () {
 });
 
 function åbensolgraf() {
-  window.location.href = "solgraf.html"; //ændre disse til vores rigtige grafside
+  window.location.href = "graf.html"; //ændre disse til vores rigtige grafside
 }
 function åbenvindgraf() {
-  window.location.href = "vindgraf.html"; //ændre disse til vores rigtige grafside
+  window.location.href = "graf.html"; //ændre disse til vores rigtige grafside
 }
 function åbenvandgraf() {
-  window.location.href = "vandgraf.html"; //ændre disse til vores rigtige grafside
+  window.location.href = "graf.html"; //ændre disse til vores rigtige grafside
 }
 function åbenfossilgraf() {
-  window.location.href = "fossilegraf.html"; //ændre disse til vores rigtige grafside
+  window.location.href = "graf.html"; //ændre disse til vores rigtige grafside
 }
