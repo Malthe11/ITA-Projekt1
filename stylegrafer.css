@@ -74,9 +74,12 @@ h1 {
   }
 }
 
+
 .tilbagetilvisu {
   display: flex;
   width: 5%;
-  float: left;
-  box-sizing: content-box;
+  transform: translateX(50%);
+  position: absolute;
+  left: 0;
+  top: 50%;
 }
